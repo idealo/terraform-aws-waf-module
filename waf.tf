@@ -16,7 +16,6 @@ resource "aws_wafv2_ip_set" "cloudfront_cidrs_global" {
 
 
 resource "aws_wafv2_rule_group" "firewall_manager_global" {
-  depends_on = [aws_secretsmanager_secret_version.secret_header]
   provider   = aws.global
   capacity   = 100
   name       = "firewall-manager-global"
@@ -99,7 +98,6 @@ resource "aws_wafv2_rule_group" "firewall_manager_global" {
 
 
 resource "aws_wafv2_rule_group" "firewall_manager_frankfurt" {
-  depends_on = [aws_secretsmanager_secret_version.secret_header]
   capacity   = 100
   name       = "firewall-manager-regional"
   scope      = "REGIONAL"
