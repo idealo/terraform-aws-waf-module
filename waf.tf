@@ -3,7 +3,7 @@ resource "aws_wafv2_ip_set" "cloudfront_cidrs_regional" {
   description        = "Cloudfront CIDRs"
   scope              = "REGIONAL"
   ip_address_version = "IPV4"
-  addresses          = file("${path.module}/cloudfront_cidrs.txt")
+  addresses          = ["120.52.22.96/27","205.251.249.0/24","180.163.57.128/26"]
 }
 
 resource "aws_wafv2_ip_set" "cloudfront_cidrs_global" {
@@ -11,7 +11,7 @@ resource "aws_wafv2_ip_set" "cloudfront_cidrs_global" {
   description        = "Cloudfront CIDRs"
   scope              = "CLOUDFRONT"
   ip_address_version = "IPV4"
-  addresses          = file("${path.module}/cloudfront_cidrs.txt")
+  addresses          = ["120.52.22.96/27","205.251.249.0/24","180.163.57.128/26"]
 }
 
 
