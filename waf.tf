@@ -3,23 +3,24 @@ resource "aws_wafv2_ip_set" "cloudfront_cidrs_regional" {
   description        = "Cloudfront CIDRs"
   scope              = "REGIONAL"
   ip_address_version = "IPV4"
-  addresses          = ["120.52.22.96/27","205.251.249.0/24","180.163.57.128/26"]
+  addresses          = ["120.52.22.96/27", "205.251.249.0/24", "180.163.57.128/26"]
 }
 
 resource "aws_wafv2_ip_set" "cloudfront_cidrs_global" {
+  provider           = aws.global
   name               = "cloudfront_cidrs"
   description        = "Cloudfront CIDRs"
   scope              = "CLOUDFRONT"
   ip_address_version = "IPV4"
-  addresses          = ["120.52.22.96/27","205.251.249.0/24","180.163.57.128/26"]
+  addresses          = ["120.52.22.96/27", "205.251.249.0/24", "180.163.57.128/26"]
 }
 
 
 resource "aws_wafv2_rule_group" "firewall_manager_global" {
-  provider   = aws.global
-  capacity   = 100
-  name       = "firewall-manager-global"
-  scope      = "CLOUDFRONT"
+  provider = aws.global
+  capacity = 100
+  name     = "firewall-manager-global"
+  scope    = "CLOUDFRONT"
 
   rule {
     name     = "AuthorizationHeaderRule"
@@ -98,9 +99,9 @@ resource "aws_wafv2_rule_group" "firewall_manager_global" {
 
 
 resource "aws_wafv2_rule_group" "firewall_manager_frankfurt" {
-  capacity   = 100
-  name       = "firewall-manager-regional"
-  scope      = "REGIONAL"
+  capacity = 100
+  name     = "firewall-manager-regional"
+  scope    = "REGIONAL"
 
   rule {
     name     = "AuthorizationHeaderRule"

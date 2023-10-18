@@ -5,8 +5,8 @@ data "aws_caller_identity" "current" {}
 
 
 data "aws_secretsmanager_secret" "secret_header" {
-  provider   = aws.fm
-  arn        = var.secret_header_arn
+  provider = aws.fm
+  arn      = var.secret_header_arn
 }
 
 data "aws_secretsmanager_secret_version" "secret_header_current" {
